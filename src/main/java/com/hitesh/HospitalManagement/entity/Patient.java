@@ -13,12 +13,12 @@ import java.time.LocalDateTime;
 @ToString
 @Setter
 @Getter
-@Table(name = "patient_tbl",uniqueConstraints = {
-          @UniqueConstraint(name = "Unique_Patient_Email",columnNames = {"email"}),
-        @UniqueConstraint(name = "unique_name_birthDate",columnNames = {"name","birthDate"})
-        },
+@Table(name = "patient", uniqueConstraints = {
+      //  @UniqueConstraint(name = "Unique_Patient_Email", columnNames = {"email"}),
+        @UniqueConstraint(name = "unique_name_birthDate", columnNames = {"name", "birthDate"})
+},
         indexes = {
-                 @Index(name ="idx_patient_birthDate",columnList ="birthDate")
+                @Index(name = "idx_patient_birthDate", columnList = "birthDate")
         }
 )
 public class Patient {
@@ -26,12 +26,13 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDate birthDate;
-    @Column(name = "patient_name",nullable = false, length = 50)
+    @Column(nullable = false, length = 50)
     private String name;
-    @Column(unique = true,nullable = false)
+    @Column(unique = true, nullable = false)
     private String Email;
     private String gender;
     @CreationTimestamp
     @Column(updatable = false)
     private LocalDateTime createdAt;
+    private String bloodGroup;
 }
