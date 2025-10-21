@@ -8,6 +8,9 @@ import com.hitesh.HospitalManagement.type.BloodGroupType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -45,9 +48,10 @@ public class PatientTest {
 //        List<Patient> patientList = patientRepository.findByBornAfterBirthDate(LocalDate.of(1990,5,10));
 
 //        List<Patient> patientList = patientRepository.findAllPatient();
-//        for (Patient patient : patientList) {
-//            System.out.println(patient);
-//        }
+        Page<Patient> patientList = patientRepository.findAllPatient(PageRequest.of(0,2, Sort.by("name")));
+        for (Patient patient : patientList) {
+            System.out.println(patient);
+        }
 
 //        List<Object[]> bloudGroupList = patientRepository.countEachBloodGroup();
 //        for(Object [] objects :bloudGroupList){
@@ -57,10 +61,10 @@ public class PatientTest {
 //        int rowsUpdated = patientRepository.patientUpdateNameWithId("Arav Sharma", 1L);
 //        System.out.println(rowsUpdated);
 
-        List<BloodGroupCountResponseEntity> bloudGroupList = patientRepository.countEachBloodGroup();
-        for(BloodGroupCountResponseEntity bloodGroupCountResponseEntity :bloudGroupList){
-            System.out.println(bloodGroupCountResponseEntity);
-        }
+//        List<BloodGroupCountResponseEntity> bloudGroupList = patientRepository.countEachBloodGroup();
+//        for(BloodGroupCountResponseEntity bloodGroupCountResponseEntity :bloudGroupList){
+//            System.out.println(bloodGroupCountResponseEntity);
+//        }
 
     }
 }
