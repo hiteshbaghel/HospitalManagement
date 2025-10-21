@@ -31,7 +31,7 @@ public class Patient {
     //    @ToString.Exclude
     private LocalDate birthDate;
     @Column(unique = true, nullable = false)
-    private String Email;
+    private String email;
     private String gender;
     @CreationTimestamp
     @Column(updatable = false)

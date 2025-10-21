@@ -3,6 +3,7 @@ package com.hitesh.HospitalManagement;
 import com.hitesh.HospitalManagement.entity.Patient;
 import com.hitesh.HospitalManagement.repository.PatientRepository;
 import com.hitesh.HospitalManagement.service.PatientService;
+import com.hitesh.HospitalManagement.type.BloodGroupType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,7 +24,17 @@ public class PatientTest {
 
     @Test
     public void testTransactionMethod(){
-        Patient patient = patientService.getPatientById(1L);
-        System.out.println(patient);
+        //Patient patient = patientService.getPatientById(1L);
+        // Patient patient1 = patientRepository.findById(1L).orElseThrow(()-> new IllegalArgumentException("Patient not found ID : " + patient.getId()));
+        //System.out.println(patient1);
+       // Patient patient = patientRepository.findByName("Neha Iyer");
+      //  List<Patient> patientList = patientRepository.findByBirthDateOrEmail(LocalDate.of(1992,12,1), "kabir.singh@example.com");
+      //  List<Patient> patientList = patientRepository.findByBirthDateBetween(LocalDate.of(1990,5,10),LocalDate.of(1995,8,20));
+       // List<Patient> patientList = patientRepository.findByNameContainingOrderByIdDesc("Di");
+        List<Patient> patientList = patientRepository.findByBloodGroup(BloodGroupType.A_POSITIVE);
+        for (Patient patient : patientList) {
+            System.out.println(patient);
+        }
+
     }
 }
