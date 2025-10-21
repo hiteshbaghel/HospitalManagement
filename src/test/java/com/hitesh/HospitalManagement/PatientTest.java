@@ -1,5 +1,6 @@
 package com.hitesh.HospitalManagement;
 
+import com.hitesh.HospitalManagement.dto.BloodGroupCountResponseEntity;
 import com.hitesh.HospitalManagement.entity.Patient;
 import com.hitesh.HospitalManagement.repository.PatientRepository;
 import com.hitesh.HospitalManagement.service.PatientService;
@@ -53,8 +54,13 @@ public class PatientTest {
 //            System.out.println(objects[0]+" "+objects[1]);
 //        }
 
-        int rowsUpdated = patientRepository.patientUpdateNameWithId("Arav Sharma", 1L);
-        System.out.println(rowsUpdated);
+//        int rowsUpdated = patientRepository.patientUpdateNameWithId("Arav Sharma", 1L);
+//        System.out.println(rowsUpdated);
+
+        List<BloodGroupCountResponseEntity> bloudGroupList = patientRepository.countEachBloodGroup();
+        for(BloodGroupCountResponseEntity bloodGroupCountResponseEntity :bloudGroupList){
+            System.out.println(bloodGroupCountResponseEntity);
+        }
 
     }
 }
