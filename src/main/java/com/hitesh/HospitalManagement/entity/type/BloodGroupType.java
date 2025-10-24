@@ -1,4 +1,4 @@
-package com.hitesh.HospitalManagement.type;
+package com.hitesh.HospitalManagement.entity.type;
 
 public enum BloodGroupType {
     A_POSITIVE,
